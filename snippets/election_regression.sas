@@ -23,7 +23,7 @@ proc sql noprint;
 quit;
 
 proc sgplot data=WORK.FILTER;
-	scatter x=percent_reporting y=vote_differential /
+	scatter x=timestamp y=vote_differential /
 	markerattrs=(symbol=CircleFilled size=9);
 run;
 
