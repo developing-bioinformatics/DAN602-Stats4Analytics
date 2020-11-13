@@ -2,7 +2,7 @@ filename testurl url "https://raw.githubusercontent.com/developing-bioinformatic
 
 
 proc import file=testurl 
-	out=WORK.ATTRITION
+	out=WORK.A
 	dbms=csv
 	replace;
 run;
