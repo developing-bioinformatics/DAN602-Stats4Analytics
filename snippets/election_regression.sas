@@ -1,3 +1,4 @@
+
 filename testurl url "https://raw.githubusercontent.com/alex/nyt-2020-election-scraper/master/all-state-changes.csv";
 
 
@@ -27,8 +28,14 @@ proc sgplot data=WORK.FILTER;
 	markerattrs=(symbol=CircleFilled size=9);
 run;
 
+proc corr data=WORK.FILTER pearson nosimple noprob plots=none;
+	var vote_differential;
+	with new_votes;
+run;
 
-
-
-
-
+proc reg data=WORK.FILTER alpha=0.05 plots(only)=(diagnostics residuals fitplot 
+		observedbypredicted);
+	where votes_remaining >=1000000;
+	model vote_differential=votes_remaining /;
+	run;
+quit;
